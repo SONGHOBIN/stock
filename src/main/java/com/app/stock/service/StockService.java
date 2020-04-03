@@ -54,10 +54,7 @@ public class StockService {
 							list.get(index).setTodayPriceStr(value[1]);
 							list.get(index).setContrastPriceStr(value[4]);
 							
-							if("보합".equals(value[3])) {
-								
-								list.get(index).setContrastPriceStr(value[5]);
-							} else {
+							if(!"보합".equals(value[3])) {
 								String sign = "";
 								
 								if("플러스".equals(value[5])) {
@@ -66,7 +63,7 @@ public class StockService {
 									sign = "-";
 								}
 								
-								list.get(index).setContrastPriceStr(sign + value[6]);
+								list.get(index).setContrastPercent(Double.parseDouble(sign + value[6]));
 							}
 							
 							break;
@@ -74,7 +71,15 @@ public class StockService {
 							list.get(index).setBeforeDayPriceStr(value[1]);
 							
 							break;
-						case 8 :
+						case 7 :
+							list.get(index).setMaxPriceStr(value[1]);
+							
+							break;
+						case 9 :
+							list.get(index).setMinPriceStr(value[1]);
+							
+							break;
+						case 10 :
 							list.get(index).setDealPriceStr(value[1]);
 							
 							break;
