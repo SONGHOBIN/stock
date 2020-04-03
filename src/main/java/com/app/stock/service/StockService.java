@@ -51,12 +51,12 @@ public class StockService {
 							
 							break;
 						case 3 :
-							list.get(index).setTodayPriceStr(value[1] + "원");
-							list.get(index).setContrastPriceStr(value[4] + "원");
+							list.get(index).setTodayPriceStr(value[1]);
+							list.get(index).setContrastPriceStr(value[4]);
 							
 							if("보합".equals(value[3])) {
 								
-								list.get(index).setContrastPriceStr(value[5] + "%");
+								list.get(index).setContrastPriceStr(value[5]);
 							} else {
 								String sign = "";
 								
@@ -66,16 +66,16 @@ public class StockService {
 									sign = "-";
 								}
 								
-								list.get(index).setContrastPriceStr(sign + value[6] + "%");
+								list.get(index).setContrastPriceStr(sign + value[6]);
 							}
 							
 							break;
 						case 4 :
-							list.get(index).setBeforeDayPriceStr(value[1] + "원");
+							list.get(index).setBeforeDayPriceStr(value[1]);
 							
 							break;
 						case 8 :
-							list.get(index).setDealPriceStr(value[1] + "원");
+							list.get(index).setDealPriceStr(value[1]);
 							
 							break;
 					}

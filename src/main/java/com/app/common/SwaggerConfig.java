@@ -4,6 +4,8 @@ package com.app.common;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.google.common.base.Predicate;
+
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -20,26 +22,21 @@ public class SwaggerConfig {
     
     @Bean
     public Docket stockApi() { 
-//    	Predicate<String> predicate=s->{
-//			return s.contains("/stock");
-//		};
-//		
-//    	version = "V1";
-//        title = "Stock API " + version;
-//    	
-//        return new Docket(DocumentationType.SWAGGER_2)
-//    		.useDefaultResponseMessages(false)
-//    		.groupName("stock")
-//			.select()
-//			.apis(RequestHandlerSelectors.basePackage("org.baeldung.web.controller"))
-//			.paths(predicate)
-//			.build()
-//			.apiInfo(apiInfo(title, version));
+    	Predicate<String> predicate=s->{
+			return s.contains("/stock");
+		};
+		
+    	version = "V1";
+        title = "Stock API " + version;
+    	
         return new Docket(DocumentationType.SWAGGER_2)
-	        .select()
-	        .apis(RequestHandlerSelectors.basePackage("com.javadeveloperzone.controller"))  // // Generate API of EndPoints which is available inside defined package
-	        .paths(PathSelectors.any())   // for all EndPoints
-	        .build();             // create object
+    		.useDefaultResponseMessages(false)
+    		.groupName("stock")
+			.select()
+			.apis(RequestHandlerSelectors.basePackage("com.app.stock.controller"))
+			.paths(predicate)
+			.build()
+			.apiInfo(apiInfo(title, version));
       }
     
     @SuppressWarnings("deprecation")

@@ -9,7 +9,6 @@ import com.app.stock.model.ResStockModel;
 
 @Mapper
 public interface StockMapper {
-	//종목 목록 조회
-	List<ResStockModel> selectStockList(ReqStockModel req);
+	List<ResStockModel> selectStockList(ReqStockModel req); //종목 목록 조회
 
 }
