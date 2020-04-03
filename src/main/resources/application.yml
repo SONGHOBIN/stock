@@ -1,0 +1,19 @@
+server:
+   port: 8081
+   tomcat:
+     uri-encoding: UTF-8
+
+spring:
+   profiles:
+      active: local
+   http:
+      encoding:
+        charset: UTF-8
+        enabled: true
+        force: true
+
+mybatis:
+   type-aliases-package: com.app.stock.model
+   mapper-locations: mapper/**/*_sql.xml
+   configuration:
+      map-underscore-to-camel-case: true

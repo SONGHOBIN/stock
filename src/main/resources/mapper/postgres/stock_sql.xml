@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.app.stock.mapper.StockMapper">
+	<select id="selectStockList" resultType="com.app.stock.model.ResStockModel">
+		/*[stock_sql][selectStockList] 주식 종목 목록 조회*/
+		SELECT 
+			s.idx
+			, s.division_idx
+			, (SELECT ko_nm FROM tb_common_code WHERE idx = s.division_idx) AS division_nm
+			, s.nm
+			, s.class_nm
+		FROM 
+			tb_stock AS s
+		WHERE 
+			s.nm LIKE '%'||#{searchValue}||'%'
+		ORDER BY s.nm, s.division_idx
+	</select>
+</mapper>

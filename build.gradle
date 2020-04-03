@@ -1,0 +1,80 @@
+buildscript {
+	ext {
+		buildVersion = "0.0.1-SNAPSHOT"
+		springBootVersion = '2.2.6.RELEASE'
+	}
+
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+plugins {
+	id 'org.springframework.boot' version '2.2.6.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+group = 'com.app'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web-services'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	
+	// lombok
+	compile('org.projectlombok:lombok:1.18.12')
+	annotationProcessor('org.projectlombok:lombok:1.18.12')
+	
+	// jsoup
+	compile('org.jsoup:jsoup:1.13.1')
+	
+	// HikariCP
+	compile('com.zaxxer:HikariCP:3.4.2')
+	
+	// MyBatis
+	compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.2')
+	
+	compile('org.springframework:spring-jdbc:5.2.5.RELEASE')
+	compile('org.springframework.boot:spring-boot-starter:2.2.6.RELEASE')
+	compile('org.springframework.boot:spring-boot-starter-jdbc:2.2.6.RELEASE')
+	
+	// postgresql
+	compile('org.postgresql:postgresql:42.2.11')
+	compile('postgresql:postgresql:9.1-901-1.jdbc4')
+	
+	// log4jdbc
+	compile('org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4:1.16')
+	
+	// swagge
+	compile('io.springfox:springfox-swagger2:2.9.2')
+	compile('io.springfox:springfox-swagger-ui:2.9.2')
+	
+	// json-path
+	compile('com.jayway.jsonpath:json-path:2.4.0')
+}
+
+test {
+	useJUnitPlatform()
+}
+
+jar {
+    baseName = "stock"
+    version = "${buildVersion}"
+    manifest {
+        attributes 'Title': 'Project stock created by Buildship',
+                   'Version': 1.0,
+                   'Main-Class': 'com.app.Application'
+    }
+}
