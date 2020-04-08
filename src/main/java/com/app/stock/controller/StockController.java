@@ -30,13 +30,13 @@ public class StockController {
 	@GetMapping(value="/list")
 	public ResponseEntity<Object> getStockList(
 		HttpServletRequest request, 
-		HttpServletResponse response, 
-		@ApiParam(value="검색어 (ex : 삼성전자)", required=true) @RequestParam(value="searchValue", required=true) String searchValue
+		HttpServletResponse response,
+		@ApiParam(value="검색어", required=true) @RequestParam(required=true) String searchValue
 	) throws Exception {
-		ReqStockModel req = new ReqStockModel();
+		ReqStockModel model = new ReqStockModel();
 		
-		req.setSearchValue(searchValue);
+		model.setSearchValue(searchValue);
 		
-		return new ResponseEntity<Object>( service.getStockList(req), HttpStatus.OK);
+		return new ResponseEntity<Object>(service.getStockList(model), HttpStatus.OK);
 	}
 }

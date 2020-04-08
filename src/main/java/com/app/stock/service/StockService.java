@@ -22,8 +22,8 @@ public class StockService {
 		this.mapper = mapper;
 	}
 	
-	public List<ResStockModel> getStockList(ReqStockModel req) throws Exception {
-		List<ResStockModel> list = mapper.selectStockList(req);
+	public List<ResStockModel> getStockList(ReqStockModel model) throws Exception {
+		List<ResStockModel> list = mapper.selectStockList(model);
 		String url;
 		
 		if(list.size() > 0) {
